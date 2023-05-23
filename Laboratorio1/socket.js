@@ -5,11 +5,6 @@ async function initialSocket(server) {
     return io
 }
 
-// async function SendEvent() {
-//     return io
-// }
-
 module.exports = {
     initialSocket,
-    //getSocket
 }
