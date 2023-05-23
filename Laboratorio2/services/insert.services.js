@@ -1,3 +1,4 @@
+require("dotenv").config()
 const {save } = require("../repository/insert.repository")
 const { encriptpassword } = require("../utils/encript")
 const socketIOClient = require("socket.io-client")
@@ -7,7 +8,7 @@ async function saveUser(body) {
         let pass = await encriptpassword(body.pass)
         body.pass = pass
         // Conectarse al WebSocket y emitir el evento con la información del usuario
-        const socket = socketIOClient('http://localhost:3000');
+        const socket = socketIOClient(`http://localhost:${process.env.SOCKET_PORT}`);
         const eventData = {
             message: 'Nuevo usuario registrado',
             level: 'Winston'
